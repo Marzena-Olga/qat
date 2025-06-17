@@ -1,0 +1,895 @@
+commit 2eeb084d0444a680f12377e772bc6faa41a1f574
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 14:44:15 2023 +0100
+
+    format text
+
+commit 24fc988100a726dea538bd7701e0f0abad52eba8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 14:43:30 2023 +0100
+
+    format text
+
+commit 1b1d4d3f55bdba12d5acb56f363ac3e6459d1b6b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 14:40:30 2023 +0100
+
+    format
+
+commit e73d47f9ae2ef4faa5d4803878a9d95ddbb18797
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 14:38:39 2023 +0100
+
+    format
+
+commit dc5bd98aa666e7007726ecb984845c861000f5fd
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 14:13:55 2023 +0100
+
+    added comments
+
+commit 601df087de5dbd19a8406e5aa21b905b9704ab70
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 13:40:15 2023 +0100
+
+    fix
+
+commit 4f4c4b3e12be701c74659bfbec573f336af9d123
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 13:38:01 2023 +0100
+
+    fix
+
+commit a1275f02bf592d2e87a1169f74d570c99c2cd203
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 13:06:27 2023 +0100
+
+    fix
+
+commit 5a6f9e166e7ddb7fb3c9885261fb71b64bb7184a
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 13:06:03 2023 +0100
+
+    prepere new jenkinsfile
+
+commit dbc38faa9bf140b9befcf57021fd3d5144ec22a9
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:51:20 2023 +0100
+
+    comment
+
+commit 17e96c3dd978eb5a5a9b9826ef286852e692712e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:48:13 2023 +0100
+
+    format
+
+commit 461643197f4d0dc5aca0c28074509781646b4510
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:47:38 2023 +0100
+
+    format
+
+commit 267020e1558de3e78055eb3881a62dd734bd1d08
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:22:59 2023 +0100
+
+    comments
+
+commit f0dfdaf1d45878c791dd2c25f0594af67a895a45
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:21:32 2023 +0100
+
+    commnents
+
+commit 09a96c574ea2b2e1b4885bfc6ee28af2aa7ede4c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:14:37 2023 +0100
+
+    format
+
+commit f5f11f18839e94f35c180ce9a99019c92b69603b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:13:58 2023 +0100
+
+    format
+
+commit 06e0edf0a31916c42c0afd0399bc8730a442e7ad
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 12:13:11 2023 +0100
+
+    update format
+
+commit a99909f9aa6c6cf063272b9c2c891dbf2c9fef3e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 11:28:33 2023 +0100
+
+    fix
+
+commit d5e9d8887491f5abb59580eff26faf6d32f4458e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 11:26:22 2023 +0100
+
+    fix
+
+commit 25998d8347e079823b562f1b31ab65a904c868b5
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Thu Jan 19 11:25:23 2023 +0100
+
+    test
+
+commit d5e51e1369d29e60bb49e9b07f6af269fdb61f7a
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:39:26 2023 +0100
+
+    fix
+
+commit d8f8440d59d392222d00eca7620dbddc309d2992
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:36:24 2023 +0100
+
+    test
+
+commit 2bcc0b7c1c64fc324531f9102e61a9d204603d71
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:28:39 2023 +0100
+
+    test
+
+commit 2d05b7240418f72895636de207cd4dc63f950eaa
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:23:56 2023 +0100
+
+    comment non used code
+
+commit 9f909ff276b79f9112ebf54155a5592ab04cfb49
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:23:15 2023 +0100
+
+    store rpms
+
+commit 77b7e03d16cd4970fb7dd9214b156d6c6d37aafc
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:17:01 2023 +0100
+
+    fix
+
+commit fa0df74fe013b873f7022be5470c93cf2654b522
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:10:40 2023 +0100
+
+    fix
+
+commit a94551d070320f9b57661eb78e4325bd1c0eb5fb
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:09:30 2023 +0100
+
+    test
+
+commit 28135a20d8b98a566672fe62c0d44143c97d27b8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:08:37 2023 +0100
+
+    fix
+
+commit e329be4dd329cff15e2dd6ff58ef524ba879486c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:05:48 2023 +0100
+
+    fix
+
+commit 65d42c6c08f6d3899de4d42b6b6b2dc00c3b6137
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:05:19 2023 +0100
+
+    fix
+
+commit 63b1f518ac81b55d1300556ea8a82fb086370965
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:04:41 2023 +0100
+
+    fix
+
+commit 4477e9a5b9d5a41e39d0d5d77447e3fcba914f5d
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:04:05 2023 +0100
+
+    fix
+
+commit dccb47a01770ddbf4c439faf79a6959e7844ff4c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:01:20 2023 +0100
+
+    test
+
+commit ebdcb774c938f9ed710b405b37a2df2a754969b3
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 15:00:30 2023 +0100
+
+    fix
+
+commit a70aa99f0c0b10fc0a0e15507a42d219ea5ed952
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:59:04 2023 +0100
+
+    fix
+
+commit 534ba9434ea305cde70e107e8e388061d05e7d37
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:58:30 2023 +0100
+
+    added return
+
+commit 836ca709696167905fe26ccf9c261897fe98d117
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:56:34 2023 +0100
+
+    fix
+
+commit 47cbd7a9c2930458286d18e9a038ac399787ba2f
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:52:01 2023 +0100
+
+    format change
+
+commit e8d7b53d76e8ea3402ba83ab339c4c6887538294
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:51:07 2023 +0100
+
+    change text format
+
+commit c37da0219751938671da6c737f01fff115b357cd
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:48:16 2023 +0100
+
+    format text
+
+commit 52c47d57e93960816e2d592c2969d79528a55a60
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:47:29 2023 +0100
+
+    format text
+
+commit fb74a746588cc6a9d0d072985e4edf445bb5f165
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:45:11 2023 +0100
+
+    fix
+
+commit 7235c200a1c78f3b2790a138646d06c845144fa4
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:01:56 2023 +0100
+
+    fix
+
+commit 35dc5662332dfb31b975ed84b03b370fe1433c42
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 14:00:46 2023 +0100
+
+    fix
+
+commit 0b025393fd1977676e6cabdce811656682d4c75d
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:58:37 2023 +0100
+
+    fix
+
+commit 4b6702d0184c33371d31cf44579ba224c1c91019
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:57:57 2023 +0100
+
+    fiix
+
+commit 757ba1e22dc7ac3beb99b98ed754426b137bdaec
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:57:06 2023 +0100
+
+    fix
+
+commit 1789177ed504067aa292c2b5037442f5a025b984
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:55:01 2023 +0100
+
+    fix
+
+commit 1434887a2ed6a820333d95a960cf8f05126ab0ad
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:53:27 2023 +0100
+
+    fix
+
+commit 10fa736b755a88e0239d54f528fa511dbaa818c8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:51:24 2023 +0100
+
+    fix
+
+commit eefbffc776565d46e58d6d2d530088ac8d9d5857
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:50:14 2023 +0100
+
+    fix
+
+commit 4285e73771041e97d6cb4853b191951cc34b2b91
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:48:03 2023 +0100
+
+    fix
+
+commit 632084c628150e7a8f5fcb9c83e88f3a5e9576bb
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:47:29 2023 +0100
+
+    fix
+
+commit 75dd8161cdcb2a8a09dc9097971d94260de68de5
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:45:23 2023 +0100
+
+    format
+
+commit eb927e63a48133206655cfc11b6586e6a3cb8bbf
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:42:05 2023 +0100
+
+    fix
+
+commit 9659bd37d5a350b0087a34dd5df568b064da62c8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:41:35 2023 +0100
+
+    add filter
+
+commit 658ef5419074c42f29ea5f9028fe5591ad528149
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:39:12 2023 +0100
+
+    add errors list
+
+commit 8b162036857070cb6e6322bd2721001985f70836
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:36:50 2023 +0100
+
+    fix
+
+commit 9c0faba8f314bd68eb4ee2ce32878e99246fa387
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:36:05 2023 +0100
+
+    add errors counter
+
+commit 954da9d7b73a0d298f5775076ac4ccc5653cd58f
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:31:41 2023 +0100
+
+    fix
+
+commit 20c41f41ae9ed5028909250b29f6094bb636974a
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:30:25 2023 +0100
+
+    add text
+
+commit d00152efa902263a10ba235363927fca3408395a
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:29:27 2023 +0100
+
+    fix
+
+commit a4841ebdf1c1bdd8d5c9611b21fbeb79edf2404e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:28:47 2023 +0100
+
+    fix
+
+commit e85466330fbd575d9effff1af4395ded4c612dce
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:27:57 2023 +0100
+
+    fix
+
+commit 9ce8232e42650735553c5f2e7a7ccdf9d9c2e47e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:26:39 2023 +0100
+
+    fix
+
+commit 3bba59915e1075d284c2690604bad6132149c6ba
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:25:49 2023 +0100
+
+    fix
+
+commit 5b6433294ada23a358686e18f18e381fc45351c4
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:24:28 2023 +0100
+
+    fix
+
+commit 0738115a16543d9b2d4a3a04eb9b30ede0510ebc
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:22:38 2023 +0100
+
+    fix
+
+commit 3e659d422815ccb63f4d1377aedaae4bee8551bb
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:20:36 2023 +0100
+
+    fix
+
+commit 1d4c3c1d091eb5ed666eba6ef08281139af2a458
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:18:40 2023 +0100
+
+    add list conversion
+
+commit c462174cb8a72118ab1b83501e66303e0c48b376
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:16:38 2023 +0100
+
+    fix
+
+commit 13ff660b587d665bcb088d844349b308d3b0aa98
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 13:14:30 2023 +0100
+
+    create parse log script
+
+commit 8b37546a9a3e250147e26db8a2f5865825f066c7
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 12:46:20 2023 +0100
+
+    fix
+
+commit 0490491945ca32eb5c61d17ff8e74989af009284
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 12:45:47 2023 +0100
+
+    fix
+
+commit e75ab785f56bbd409ea197b57bd3ca01105f0c6b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 12:41:15 2023 +0100
+
+    fix
+
+commit 5a597e52050f41f7e3a8ebabbfa76fdcb4d1ce8a
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 12:38:31 2023 +0100
+
+    add logs
+
+commit 705fb3bca94a75ba4bcaabbc9c247fd9731915e7
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 11:32:08 2023 +0100
+
+    fix
+
+commit 32c8c00f64d0eb4bb6b576013c1d878e32577c6c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 11:25:56 2023 +0100
+
+    fix
+
+commit 4a4a99d59ba62557d34ac6524a1ab60d37b598d8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 11:12:51 2023 +0100
+
+    add comment
+
+commit 29c95f6495f779ed129ac738d788556a0c232bfa
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 10:56:14 2023 +0100
+
+    fix
+
+commit 2ce14a9e8138b4c864bf9a4808f719799c9786f2
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 10:50:10 2023 +0100
+
+    fix
+
+commit 0cc4216660a4207bd9ffbd5f1a7d5fde0a6675c1
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 10:49:32 2023 +0100
+
+    fix
+
+commit 7bb18f3798feef958472bf97e053e136a8be87bb
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Wed Jan 18 10:46:49 2023 +0100
+
+    remove messages
+
+commit 987f07f5ed4fe69bbab2d0e488215e0eb913df47
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 16:09:00 2023 +0100
+
+    fix
+
+commit 48ab98a7fa826436403c9d7361993f9b3f5f5d15
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 16:08:08 2023 +0100
+
+    fix
+
+commit a8fd254ccfd9106668e8ff6fd20e3cb603ef19ef
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 16:05:55 2023 +0100
+
+    fixes
+
+commit aed32e29373f0a7be73c2e16328d4e51c1c3d5f8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:57:29 2023 +0100
+
+    test1
+
+commit 499e786089c949615ba5c46e10d39be437298ad4
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:52:53 2023 +0100
+
+    fix
+
+commit 531e2e29325bc637d3075d8473ca297242718fba
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:49:19 2023 +0100
+
+    fix
+
+commit ac5eb57858b2803055b7508e9ea014fd24350d92
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:43:09 2023 +0100
+
+    fix
+
+commit 9b410ffaed218d9c3de97b9861a137a4f577ccbe
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:40:52 2023 +0100
+
+    fix
+
+commit fd7a296ec7c777a7c30887c746bc0aa3643c0a04
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:35:22 2023 +0100
+
+    fix
+
+commit cfacb8491a20216a640f4c0438ba6f9b675cc7e7
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:33:17 2023 +0100
+
+    fix
+
+commit 534e941b63fe98434032ecb169fe177e7943332f
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:28:26 2023 +0100
+
+    fix
+
+commit 3aca893c47ed07737d83d082d9f3172b60de8f06
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:24:40 2023 +0100
+
+    fix
+
+commit 2c2a4dddeabc06472d9fc168d5c4e66608a0e686
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:21:58 2023 +0100
+
+    fix
+
+commit fb4b8fb774f4c6a66947d7a8f28a077b8693d336
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:10:30 2023 +0100
+
+    fix
+
+commit 31b858724fcb899954bfc9465117317fabb803a0
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:09:51 2023 +0100
+
+    add remove tar.gz old packages
+
+commit 36e5e8c72ade440dff97af80f83ae2d42de8637b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:07:52 2023 +0100
+
+    order  code
+
+commit 5991faea3bb47e1cf915a3e2875a913907d9717c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:05:40 2023 +0100
+
+    order code
+
+commit c32cfbe778194518bd2bdce41fe8069eef1535c0
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:04:32 2023 +0100
+
+    fix libraries
+
+commit 8d4e6dac11c9662709a2a3d2866c42bb6d6fb0ea
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:02:12 2023 +0100
+
+    change lib
+
+commit c3274c8c617fcb3893c7059fdb4dad3c4b89b5b8
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:01:48 2023 +0100
+
+    commnets
+
+commit e96bc91ccde5333aa7a9973ecd4345686fc5cd84
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 15:01:10 2023 +0100
+
+    add commnets
+
+commit c6b54b89684ed30c1ad5cf0e3df7d95b3496d518
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:59:49 2023 +0100
+
+    fix
+
+commit 96b5320b6112038a50f9fcc17f38103782f7fc55
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:59:26 2023 +0100
+
+    fix
+
+commit 8d08fb5a63e7e7edca56427c424680b108b17cce
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:58:03 2023 +0100
+
+    fixes
+
+commit c7dc819af0e0265c2f67c6169b457fe9f8cd5153
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:56:41 2023 +0100
+
+    comment
+
+commit 74f73dbc8d29218b216d234478b877019d228e55
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:54:43 2023 +0100
+
+    add comment
+
+commit 63d8a9104d2fee5e242a5cbc1261fad4b3d3ae5d
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:47:07 2023 +0100
+
+    fixes
+
+commit 1d3487a4caa428bc143042ae0ab041d67a9a6885
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:44:25 2023 +0100
+
+    fix
+
+commit 6cf96b21509af23153c6762c54e2be6d700f719f
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:43:00 2023 +0100
+
+    fixes
+
+commit 34f09554748dc9e9aded95999f05579c874cbe83
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:30:45 2023 +0100
+
+    fix
+
+commit f1ca81b81e75e34cd57b1297b1172571c8187ea3
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:29:27 2023 +0100
+
+    fix
+
+commit 8b095f37cea279c96f816a08093bc6d15df46537
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:26:02 2023 +0100
+
+    fix
+
+commit e3d22d1a44aa1fa4307b95a44bdc7fbed26cc1a3
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:24:03 2023 +0100
+
+    improve
+
+commit f2d5e2f40b94300f370fc03dc1e9c163f8de4e9b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:22:40 2023 +0100
+
+    fix
+
+commit b8068912ffe40cdbe06ef8ffaa44f639d4ef5810
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:22:00 2023 +0100
+
+    fix
+
+commit a71d73b3bfce9c9b1f81cbd57e9218bcb7284174
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:17:22 2023 +0100
+
+    fix
+
+commit 69e118d232a219c0a50f4591506465c911061d7e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Tue Jan 17 14:15:06 2023 +0100
+
+    change search conditions
+
+commit 1e269b3f8848f484dd4e71bf121a0bef9081b5e2
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 16:40:26 2023 +0100
+
+    fix datetime
+
+commit d4626f7a29bf59fa941713dda19bb72178a5480e
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 16:24:42 2023 +0100
+
+    fix datetime
+
+commit 79bea1045bc56e35a7ea44a1bbf9979fb3762479
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 16:21:50 2023 +0100
+
+    fix date
+
+commit 1ccc409a04f362f112b1647d57b10b278ae60195
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 16:19:15 2023 +0100
+
+    added dest folder
+
+commit 76b1f53a7ffce3e5663377a89cccbb4efd65eef2
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:39:37 2023 +0100
+
+    fix
+
+commit 45ed65b1ae5d26c6ff35c43d57fd2e5b8d581e08
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:38:40 2023 +0100
+
+    fix
+
+commit 2afd5b65c9176d599c8280c67d0e58e0f0b612c5
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:37:57 2023 +0100
+
+    fix
+
+commit 681b82d96ec7044c39658871635ce9d519d2d950
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:37:20 2023 +0100
+
+    check
+
+commit 32ffc9ff2ff7f99680099a1872e98d267ca4ea11
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:29:23 2023 +0100
+
+    fixes
+
+commit 53dbafa7178ebaf240448c31a4226fdc7fd49833
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:18:04 2023 +0100
+
+    fix
+
+commit f8cf700aaf9085f5dc0263769ba02d5f860c7fa6
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:15:05 2023 +0100
+
+    fix
+
+commit 642ad37e47be884142a0422413352fd457c83738
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 15:13:37 2023 +0100
+
+    fixes
+
+commit 8a72cc083db052d84e5429e5fff55e9d47348ee3
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:57:31 2023 +0100
+
+    add make
+
+commit 4f242c0704fec54991a77f8462048fff03f834d7
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:54:55 2023 +0100
+
+    fix
+
+commit a3e50af73d463b315b691583738a8339632d56a6
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:53:40 2023 +0100
+
+    fix
+
+commit 453bc9e137303762adc9a08358ec0cc082766579
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:53:07 2023 +0100
+
+    added commands
+
+commit 7e631d683015424d54e800dfe062ee8f46866599
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:47:30 2023 +0100
+
+    added download package
+
+commit fe525dbba90235c1e559fa4152e68b933b086de2
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:29:34 2023 +0100
+
+    fix
+
+commit 39792bd87134a013a4999f40c74a49131c7d0e0b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 14:27:57 2023 +0100
+
+    check creds
+
+commit 634a00d494d78bab924a41cc51f4dc624d773761
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:39:43 2023 +0100
+
+    change creds
+
+commit 18414d946d89d7ddb9f500f8289887b4091d4c1d
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:24:44 2023 +0100
+
+    ann notification
+
+commit 40f320a4a2da9ff1b82c858f54da815cb1adaa6c
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:23:17 2023 +0100
+
+    add notification
+
+commit f42b594b49b207a8f2abeaa8c012baac3ac87291
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:20:12 2023 +0100
+
+    change imports
+
+commit b58d79c42ae40949db5ffffb13f3b470a9f48364
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:19:20 2023 +0100
+
+    change imports
+
+commit 30ff6765a7c55000e1425f04f51f07b8b577f35d
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 13:10:54 2023 +0100
+
+    add requirements
+
+commit d9cbddd60616f6577bfae489efed481952db075b
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 12:14:05 2023 +0100
+
+    add artifactory qery
+
+commit a490c5bf139d5a3c30a21b5c5f90f1d4fe54cb14
+Merge: c7252bf b066fa6
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 12:01:34 2023 +0100
+
+    Merge branch 'main' of https://github.com/intel-sandbox/automation.fedora.rpms.qat.patches.jenkins
+
+commit c7252bfb6971f787f4e4f4b58906b9cc13c37439
+Author: MarzenaOlga <marzena.kupniewska@intel.com>
+Date:   Mon Jan 16 11:57:18 2023 +0100
+
+    add new file for rpm generation
+

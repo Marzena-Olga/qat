@@ -1,0 +1,54 @@
+def runCommandInMyEnvironment(cmd) {
+  sh "source /usr/lib64/python3.10/venv/scripts/common/activate; ${cmd}"
+}
+
+pipeline {
+    
+        parameters {
+        string name: 'QAT_PATCHES', defaultValue: '5ee52118ac14,92bf269fbfe9,16c1ed95d1c4,d4cfb144f605', description: 'List QAT patches', trim: false
+        string name: 'FEDORA_KERNEL_BRANCH', defaultValue: 'f36', description: 'Branch on fedora repository', trim: false
+        string name: 'BUILD_DIRECTORY', defaultValue: 'fed_rpms_4_dev_conf', description: 'Build directory', trim: false
+        string name: 'BUILD_SN', defaultValue: '0000', description: 'Build sn', trim: false
+        string name: 'BUILD_STRING', defaultValue: 'qat_custom', description: 'Build string', trim: false
+        string name: 'BRANCH', defaultValue: 'master', description: 'Kernel branch', trim: false
+        string name: 'EMAIL_MAINTAINER', defaultValue: 'marzena.kupniewska@intel.com', description: 'Main person to send mail to. Only this person gets mail when pipe crashes.',  trim: false
+        string name: 'EMAIL_RECEIPENTS', defaultValue: 'marzena.kupniewska@intel.com', description: 'List of coma separated email receipents to CC mail.',  trim: false
+    }
+    
+    agent {
+        label('fedora36rpm')
+    }
+    
+    environment {
+        GIT_TRACE_PACKET = 1
+        GIT_TRACE = 1
+        //GIT_CURL_VERBOSE = 1
+    }
+    
+    stages {
+        stage('run'){
+            steps {
+                cleanWs()
+                git branch: 'main',
+                url: 'https://github.com/intel-sandbox/automation.fedora.rpms.qat.patches.jenkins.git'
+                sh('echo ${WORKSPACE}')
+                sh('chmod 755 build_fedora_kernel_with_qat_patches.sh ')
+                //sh ('./build_fedora_kernel_with_qat_patches.sh ${QAT_PATCHES} ${FEDORA_KERNEL_BRANCH} ${WORKSPACE}/${BUILD_DIRECTORY}/ ${BUILD_SN} ${BUILD_STRING}')
+                //ex: build_fedora_kernel_with_qat_patches.sh 5ee52118ac14,92bf269fbfe9,16c1ed95d1c4,d4cfb144f605 f36 ~/fed_rpms_4_dev_conf/ 0001 cfg1
+                runCommandInMyEnvironment('python3 build_fedora_kernel_with_qat_patches.py')
+            }
+        }
+    }
+    post{
+        success{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[RPM generation][QAT] ${JOB_NAME} - (${BUILD_NUMBER}) Finished Successfuly!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Success"
+        }
+        unsuccessful{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[IA] ${JOB_NAME} - (${BUILD_NUMBER}) Failed!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Fail"
+        }
+    }
+}

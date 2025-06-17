@@ -1,0 +1,107 @@
+HTTPS_PROXY="http://proxy-dmz.intel.com:912/"
+HTTP_PROXY="http://proxy-dmz.intel.com:912/"
+NO_PROXY="localhost,intel.com,192.168.0.0/16,172.16.0.0/12,127.0.0.0/8,10.0.0.0/8,163.33.0.0/16,137.46.0.0/16,137.102.0.0/16"
+
+ 
+
+// Several plugins like WithPyenv is not working perfectly accross platform when using Virtual Env.
+// Put this method outside pipeline
+def Python(String command) {
+    if (env.ISUNIX == "TRUE") {
+        sh script:"source pyenv/bin/activate && python ${command}", label: "python ${command}"
+    }
+    else {
+        powershell script:"pyenv\\Scripts\\Activate.ps1 ; python ${command}", label: "python ${command}"
+    }
+}
+
+pipeline {
+    
+    agent {
+        //label('fedora36rpm')
+        label params.OS == "any" ? "" : params.OS
+    }
+
+
+    parameters {
+        string name: 'QAT_PATCHES', defaultValue: '5ee52118ac14,92bf269fbfe9,16c1ed95d1c4,d4cfb144f605', description: 'List QAT patches', trim: false
+        string name: 'FEDORA_KERNEL_BRANCH', defaultValue: 'f36', description: 'Branch on fedora repository', trim: false
+        string name: 'BUILD_DIRECTORY', defaultValue: 'fed_rpms_4_dev_conf', description: 'Build directory', trim: false
+        string name: 'BUILD_SN', defaultValue: '0000', description: 'Build sn', trim: false
+        string name: 'BUILD_STRING', defaultValue: 'qat_custom', description: 'Build string', trim: false
+        string name: 'BRANCH', defaultValue: 'master', description: 'Kernel branch', trim: false
+        string name: 'EMAIL_MAINTAINER', defaultValue: 'marzena.kupniewska@intel.com', description: 'Main person to send mail to. Only this person gets mail when pipe crashes.',  trim: false
+        string name: 'EMAIL_RECEIPENTS', defaultValue: 'marzena.kupniewska@intel.com', description: 'List of coma separated email receipents to CC mail.',  trim: false
+        choice(name: "OS", choices: ["Fedora36dell", "fedora36rpm", "fedora37rpm", "Fedora38rpm"])
+    }
+    
+    
+    environment {
+        GIT_TRACE_PACKET = 1
+        GIT_TRACE = 1
+        //GIT_CURL_VERBOSE = 1
+    }
+    
+    
+    
+        
+        
+    stages {
+        
+        stage('Prepare venv') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh "echo LINUX"
+                        env.ISUNIX = "TRUE" // cache isUnix() function to prevent blueocean show too many duplicate step (Checks if running on a Unix-like node) in python function below
+                        sh 'python3 -m venv pyenv'
+                        PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/bin/', returnStdout: true).trim()                        
+                    }
+                    else {
+                        env.ISUNIX = "FALSE"
+                        powershell(script:"py -3 -m venv pyenv") // windows not allow call python3.exe with venv. https://github.com/msys2/MINGW-packages/issues/5001
+                        PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/Scripts/', returnStdout: true).trim()
+                    }
+
+                    try  {
+                        // Sometime agent with older pip version can cause error due to non compatible plugin.
+                        Python("-m pip install --upgrade pip")
+                    } 
+                    catch (ignore) { } // update pip always return false when already lastest version
+                    // After this you can call Python() anywhere from pipeline
+                    Python("-m pip install -r requirements.txt --proxy=http://proxy-chain.intel.com:911")
+                    //Python("-m pip install requests --proxy=http://proxy-chain.intel.com:911")
+                    echo ""
+                }                
+            }
+        }
+        
+        stage('run'){
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/intel-sandbox/automation.fedora.rpms.qat.patches.jenkins.git'
+                sh('echo ${WORKSPACE}')
+                //sh('chmod 755 build_fedora_kernel_with_qat_patches.sh ')
+                //sh ('./build_fedora_kernel_with_qat_patches.sh ${QAT_PATCHES} ${FEDORA_KERNEL_BRANCH} ${WORKSPACE}/${BUILD_DIRECTORY}/ ${BUILD_SN} ${BUILD_STRING}')
+                //ex: build_fedora_kernel_with_qat_patches.sh 5ee52118ac14,92bf269fbfe9,16c1ed95d1c4,d4cfb144f605 f36 ~/fed_rpms_4_dev_conf/ 0001 cfg1
+                Python ('build_fedora_kernel_with_qat_patches.py')
+            }
+        }
+    }
+    
+    
+    
+    
+    post{
+        success{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[RPM generation][QAT] ${JOB_NAME} - (${BUILD_NUMBER}) Finished Successfuly!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Success"
+        }
+        unsuccessful{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[IA] ${JOB_NAME} - (${BUILD_NUMBER}) Failed!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Fail"
+        }
+    }
+}
