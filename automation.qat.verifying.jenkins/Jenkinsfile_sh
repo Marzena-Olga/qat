@@ -1,0 +1,130 @@
+HTTPS_PROXY="http://proxy-dmz.intel.com:912/"
+HTTP_PROXY="http://proxy-dmz.intel.com:912/"
+NO_PROXY="localhost,intel.com,192.168.0.0/16,172.16.0.0/12,127.0.0.0/8,10.0.0.0/8,163.33.0.0/16,137.46.0.0/16,137.102.0.0/16"
+
+pipeline {
+    
+     agent {
+        label('Fedora36dell')
+        //label params.OS == "any" ? "" : params.OS
+    }
+    
+    
+    parameters {
+        string name: 'GITHUB_PR_NUMBER', defaultValue: '95', description: 'PR number', trim: false
+        string name: 'EMAIL_MAINTAINER', defaultValue: 'marzena.kupniewska@intel.com', description: 'Main person to send mail to. Only this person gets mail when pipe crashes.',  trim: false
+        string name: 'EMAIL_RECEIPENTS', defaultValue: 'marzena.kupniewska@intel.com', description: 'List of coma separated email receipents to CC mail.',  trim: false
+        //choice(name: "OS", choices: ["Fedora36dell", "fedora36rpm", "fedora37rpm", "fedora34rpm", "fedora35rpm"])
+    }
+    
+    environment {
+        //GIT_TRACE_PACKET = 1
+        //GIT_TRACE = 1
+        //GIT_CURL_VERBOSE = 1
+        CREDS = credentials('MarzenaOlga_AD')
+    }
+    
+    
+    
+        
+        
+    stages {
+        
+        stage('run'){
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/intel-sandbox/automation.qat.verifying.jenkins'
+                //sh 'chmod +x ./multi.sh'
+                //sh './multi.sh'
+                script {
+                    sh 'chmod +x ./multi.sh'
+                    def sh_out = sh(script: './multi.sh', returnStdout: true)
+                    def sh_out_array = sh_out.split('\n')
+                    echo('**********************************************************************************************')
+                    //println sh_out_array[sh_out_array.size() -2]
+                    def committs_array = (sh_out_array[sh_out_array.size() -2]).split('" "')
+                    for (i in committs_array){
+                        println ("${i}")
+                        }
+
+                    echo('*********************************************************************************************')
+                    //println sh_out_array[sh_out_array.size() -1]
+
+                    def oids_array = (sh_out_array[sh_out_array.size() -1]).split(' ')
+                    def oids_array_new =[] 
+                    println("Oids:")
+                    for (i in oids_array){
+                        i = i.replace('"','')
+                        oids_array_new << i
+                        println(i)
+                        env.OID = i
+                    }
+                    println(oids_array_new)
+                    sh 'printenv'             
+                
+                    def jobs = [:]
+                    for (i in oids_array_new){
+                        println(i)
+                        jobs["${i}"] = {
+                            node {
+                                stage("${i}"){
+                                    echo "oid ${i}"
+                                    build job: 'test_job', parameters: [string(name: 'GIT_BRANCH_NAME', value: i)]
+                                }
+                            }
+                        }
+                    }
+                    parallel jobs
+                }
+            }
+        }
+        
+//        stage('Build, run, report') {
+//            steps {
+//                script {
+//                    def jobs = [:]
+//                    for (i in oids_array){
+//                        jobs["${i}"] = {
+//                            node {
+//                                stage("${i}"){
+//                                    echo '${i}'
+//                                }
+//                            }
+//                        }
+//                    }
+//                   parallel jobs
+//                }
+//            }
+//        }
+
+
+
+//       stage ('trigger job'){
+//            steps {
+//                //println(oids_array_new)
+//                parallel(
+//                    fedora36rpm: {
+//                        build job: 'test_job', parameters: [string(name: 'GIT_BRANCH_NAME', value: env.OID)]
+//                    }
+//                )
+//            }
+//        }
+
+    }
+    
+    
+    
+    
+    post{
+        success{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[RPM generation][QAT] ${JOB_NAME} - (${BUILD_NUMBER}) Finished Successfuly!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Success"
+        }
+        unsuccessful{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[IA] ${JOB_NAME} - (${BUILD_NUMBER}) Failed!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Fail"
+        }
+    }
+}

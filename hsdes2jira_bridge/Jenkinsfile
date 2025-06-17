@@ -1,0 +1,80 @@
+
+
+HTTPS_PROXY="http://proxy-dmz.intel.com:912/"
+HTTP_PROXY="http://proxy-dmz.intel.com:912/"
+NO_PROXY="localhost,intel.com,192.168.0.0/16,172.16.0.0/12,127.0.0.0/8,10.0.0.0/8,163.33.0.0/16,137.46.0.0/16,137.102.0.0/16"
+
+// Put this stage on top of pipeline
+stage('Prepare venv') {
+    steps {
+        script {
+            if (isUnix()) {
+                env.ISUNIX = "TRUE" // cache isUnix() function to prevent blueocean show too many duplicate step (Checks if running on a Unix-like node) in python function below
+                sh 'python3 -m venv pyenv'
+                PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/bin/', returnStdout: true).trim()                        
+            }
+            else {
+                env.ISUNIX = "FALSE"
+                powershell(script:"py -3 -m venv pyenv") // windows not allow call python3.exe with venv. https://github.com/msys2/MINGW-packages/issues/5001
+                PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/Scripts/', returnStdout: true).trim()
+            }
+
+            try  {
+                // Sometime agent with older pip version can cause error due to non compatible plugin.
+                Python("-m pip install --upgrade pip")
+            } 
+            catch (ignore) { } // update pip always return false when already lastest version
+            // After this you can call Python() anywhere from pipeline
+            Python("-m pip install -r requirements.txt")
+            echo ""
+        }                
+    }
+}
+
+// Several plugins like WithPyenv is not working perfectly accross platform when using Virtual Env.
+// Put this method outside pipeline
+def Python(String command) {
+    if (env.ISUNIX == "TRUE") {
+        sh script:"source pyenv/bin/activate && python ${command}", label: "python ${command}"
+    }
+    else {
+        powershell script:"pyenv\\Scripts\\Activate.ps1 ; python ${command}", label: "python ${command}"
+    }
+}
+
+
+def runCommandInMyEnvironment(cmd) {
+  sh "source /root/virt/venv/bin/activate; ${cmd}"
+  //sh "\c\Users\mkupniew\HSD-ES_sample_python_code\venv\Scripts\activate.bat; ${cmd}"
+}
+
+pipeline {
+    //agent { docker { image 'python:3.10.1-alpine' } }
+    agent { label 'WIN_QAT' }
+    environment {
+        ENV_NAME = "${env.WORKSPACE}"
+        VIRT_ENV = "${env.WORKSPACE}"+'\venv'
+    }
+    
+    stages {
+        stage('build') {
+            steps {
+                echo ENV_NAME
+                echo VIRT_ENV
+                sh ('echo ${ENV_NAME}')
+                //sh ('virtualenv venv')
+                sh ('ls -l')
+                //runCommandInMyEnvironment('pwd')
+                //script {
+                //    withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '001', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                //        sh ('echo uname=$USERNAME pwd=$PASSWORD')
+                sh ('python3 test.py')
+                //       }
+                //    }
+                //runCommandInMyEnvironment('python3 --version')
+                //sh ('pwd')
+            }
+        }
+    }
+}
+

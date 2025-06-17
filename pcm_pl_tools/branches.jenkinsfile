@@ -1,0 +1,72 @@
+HTTPS_PROXY="http://proxy-dmz.intel.com:912/"
+HTTP_PROXY="http://proxy-dmz.intel.com:912/"
+NO_PROXY="localhost,intel.com,192.168.0.0/16,172.16.0.0/12,127.0.0.0/8,10.0.0.0/8,163.33.0.0/16,137.46.0.0/16,137.102.0.0/16"
+
+pipeline {
+    
+    agent {
+        label('fedora38dell')
+        //label params.OS == "any" ? "" : params.OS
+    }
+
+
+    parameters {
+        string name: 'OSAL',         defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-sandbox/applications.devops.software-core-tools.staging.qat.common.osal',    trim: true //1
+        string name: 'SAL',          defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-sandbox/applications.devops.software-core-tools.staging.qat.common.sal',     trim: true //2
+        string name: 'ADF',          defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-sandbox/applications.devops.software-core-tools.staging.qat.common.adf',     trim: true //3
+        string name: 'ADF_CTL',      defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-sandbox/applications.devops.software-core-tools.staging.qat.common.adf-ctl', trim: true //4
+        string name: 'API',          defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-innersource/drivers.qat.api.api',                                            trim: true //5
+        string name: 'INLINE',       defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-restricted/drivers.qat.inline.inline',                                       trim: true //6
+        string name: 'USDM',         defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-innersource/drivers.qat.common.usdm',                                        trim: true //7
+        string name: 'CRYPTODEV',    defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://git.kernel.org//pub/scm/linux/kernel/git/herbertcryptodev-2.6 ',                              trim: true //8
+        string name: 'SYSTEM_TEST',  defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-innersource/drivers.qat.validation.system-test',                             trim: true //9
+        string name: 'SAMPLE_CODE',  defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-sandbox/applications.devops.software-core-tools.staging.qat.common.sample-code', trim: true //10
+        string name: 'RELESE_FILES', defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-innersource/drivers.qat.common.release-files',                               trim: true //11
+        string name: 'BUILS_SYSTEM', defaultValue: 'qat_upstream_lin_rel_24.02.0', description: 'Name of branch, repo: https://github.com/intel-innersource/drivers.qat.common.build-system',                                trim: true //12
+ 
+        string name: 'NODE_LABEL',   defaultValue: 'SI.f33_64',                             description: 'Name of branch, repo: ', trim: true
+        string name: 'BASE_RELEASE', defaultValue: 'QAT17_MAIN',                            description: 'Name of branch, repo: ', trim: true
+        string name: 'PDL_LIST',     defaultValue: 'qat_upstream_builds@eclists.intel.com', description: 'Name of branch, repo: ', trim: true
+        
+        string name: 'SWF_QAT_TICKET', defaultValue: 'QATE-93803',                          description: 'Jira ticket', trim: false
+        string name: 'EMAIL_MAINTAINER', defaultValue: 'qat.sw.pcm.pl@intel.com', description: 'Main person to send mail to. Only this person gets mail when pipe crashes.',  trim: false
+        string name: 'EMAIL_RECEIPENTS', defaultValue: 'qat.sw.pcm.pl@intel.com', description: 'List of coma separated email receipents to CC mail.',  trim: false
+        //choice(name: "OS", choices: ["Fedora36dell", "fedora36rpm", "fedora37rpm", "Fedora38rpm"])
+    }
+    
+    environment {
+        CREDS = credentials('MarzenaOlga_AD')
+    }
+        
+    stages {
+        
+        stage('run'){
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/intel-sandbox/pcm_pl_tools.git'
+                script {
+                    sh('echo ${WORKSPACE}')
+                    sh 'chmod +x ./make_branches.sh'
+                    sh './make_branches.sh'
+                }
+            }
+        }
+
+    }
+    
+    
+    
+    
+    post{
+        success{
+           //emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[RPM generation][QAT] ${JOB_NAME} - (${BUILD_NUMBER}) Finished Successfuly!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Success"
+        }
+        unsuccessful{
+            //emailext body: 'Check console output at  ${BUILD_URL}.\n ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[IA] ${JOB_NAME} - (${BUILD_NUMBER}) Failed!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Fail"
+        }
+    }
+}
