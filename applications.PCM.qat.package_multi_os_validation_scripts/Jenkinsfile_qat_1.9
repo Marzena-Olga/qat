@@ -1,0 +1,110 @@
+HTTPS_PROXY="http://proxy-dmz.intel.com:912/"
+HTTP_PROXY="http://proxy-dmz.intel.com:912/"
+NO_PROXY="localhost,intel.com,192.168.0.0/16,172.16.0.0/12,127.0.0.0/8,10.0.0.0/8,163.33.0.0/16,137.46.0.0/16,137.102.0.0/16"
+
+ 
+
+// Several plugins like WithPyenv is not working perfectly accross platform when using Virtual Env.
+// Put this method outside pipeline
+def Python(String command) {
+    if (env.ISUNIX == "TRUE") {
+        sh script:"source pyenv/bin/activate && python ${command}", label: "python ${command}"
+    }
+    else {
+        powershell script:"pyenv\\Scripts\\Activate.ps1 ; python ${command}", label: "python ${command}"
+    }
+}
+
+pipeline {
+    
+    parameters {
+    string name: 'ARTI_PATH', defaultValue: 'https://af01p-ir.devtools.intel.com/artifactory/scb-local/QAT_packages/QAT19/QAT19_MAIN/', description: 'Artifactory path that which will be searched for the newest QAT package.',  trim: false
+    string name: 'PACKAGE_ADRESS', defaultValue: '', description: 'Specific artifactory package adress, if not supplied the newest found package will be used. Start with scb-local.',  trim: false
+    string name: 'MAKE_FLAG', defaultValue: '', description: 'Flag to be used with make command.',  trim: false
+    string name: 'CONFIGURE_FLAG', defaultValue: '', description: 'Flag to be used with ./configure command.',  trim: false
+    booleanParam name: "RUN_UPDATE", defaultValue: false, description: '(approx. 50 minutes) Using this option will run updates on all VMs and install Intel Next Kernel on VM that have _INK at the end of their virsh name.'
+    string name: 'EMAIL_MAINTAINER', defaultValue: 'marzena.kupniewska@intel.com' , description: 'Main person to send mail to. Only this person gets mail when pipe crashes.',  trim: false
+    string name: 'EMAIL_RECEIPENTS', defaultValue: 'berenike.bronikowska@intel.com, rafal.baranski@intel.com, sebastian.a.swiestowski@intel.com, michal.kurek@intel.com, arti.trivedi@intel.com, shashank.gupta@intel.com', description: 'List of coma separated email receipents to CC mail.',  trim: false
+    }
+    
+    agent {
+        label('QAT18')
+    }
+    
+    environment {
+        GIT_TRACE_PACKET = 1
+        GIT_TRACE = 1
+        //GIT_CURL_VERBOSE = 1
+        CREDS = credentials('MarzenaOlga_AD')
+    }
+    
+     
+    stages {
+        
+        stage('Prepare venv') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh "echo LINUX"
+                        env.ISUNIX = "TRUE" // cache isUnix() function to prevent blueocean show too many duplicate step (Checks if running on a Unix-like node) in python function below
+                        sh 'python3 -m venv pyenv'
+                        PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/bin/', returnStdout: true).trim()                        
+                    }
+                    else {
+                        env.ISUNIX = "FALSE"
+                        powershell(script:"py -3 -m venv pyenv") // windows not allow call python3.exe with venv. https://github.com/msys2/MINGW-packages/issues/5001
+                        PYTHON_PATH =  sh(script: 'echo ${WORKSPACE}/pyenv/Scripts/', returnStdout: true).trim()
+                    }
+
+                    try  {
+                        // Sometime agent with older pip version can cause error due to non compatible plugin.
+                        Python("-m pip install --upgrade pip")
+                    } 
+                    catch (ignore) { } // update pip always return false when already lastest version
+                    // After this you can call Python() anywhere from pipeline
+                    Python("-m pip install -r requirements.txt --proxy=http://proxy-chain.intel.com:911")
+                    //Python("-m pip install requests --proxy=http://proxy-chain.intel.com:911")
+                    echo ""
+                }                
+            }
+        }
+        
+        stage('run'){
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/intel-sandbox/applications.PCM.qat.package_multi_os_validation_scripts.git'
+                Python ('start-vm.py')
+            }
+        }
+
+        stage('check'){
+            steps {
+                Python ('get-package.py') 
+                Python ('distribute-package.py') 
+                Python ('decompress-package.py') 
+                Python ('make-package.py') 
+                Python ('parse-logs.py') 
+            }
+        }   
+
+        stage('store'){
+            steps {
+                Python ('shutdown-vm.py') 
+            }
+        }      
+    }
+    
+    
+    post{
+        success{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ${FILE,path="results.html"} ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[QAT IA AUTOMATION][QAT] ${JOB_NAME} - (${BUILD_NUMBER}) Finished Successfuly!', to: '$EMAIL_MAINTAINER, cc: $EMAIL_RECEIPENTS'
+            //cleanWs()
+            echo "Success"
+        }
+        unsuccessful{
+            emailext body: 'Check console output at  ${BUILD_URL}.\n ${FILE,path="results.html"} ', attachmentsPattern: '*.log' , attachLog: true, mimeType: 'text/html', subject: '[IA] ${JOB_NAME} - (${BUILD_NUMBER}) Failed!', to: '$EMAIL_MAINTAINER'
+            //cleanWs()
+            echo "Fail"
+        }
+    }
+}
